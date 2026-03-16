@@ -87,6 +87,37 @@ def udf(
     return common.table_to_tile(bounds, table)
 ```
 
+### The `_sample` File
+
+When `fused.ingest()` runs, it creates a folder of partitioned Parquet files alongside a small file called `_sample`:
+
+```
+s3://fused-asset/infra/building_msft_us/
+  ├── 0.parquet
+  ├── 1.parquet
+  ├── 2.parquet
+  ├── ...
+  └── _sample        ← spatial index
+```
+
+Each numbered Parquet file can contain multiple **row groups** (chunks). `_sample` is the spatial index that maps every chunk to its geographic extent so readers can skip irrelevant files entirely.
+
+---
+
+### Reading `_sample`
+
+You can read the spatial index to inspect chunk bounding boxes:
+
+```python showLineNumbers
+df = fused.get_chunks_metadata("s3://fused-asset/infra/building_msft_us/")
+```
+
+This returns a GeoDataFrame with one row per chunk, including `file_id`, `chunk_id`, bounding box coordinates, and a `geometry` column.
+
+In [File Explorer](/workbench/file-explorer/), double-clicking a `_sample` file automatically generates a ready-to-run UDF that reads the ingested table.
+
+---
+
 ## Common Ingestion Patterns
 
 ### Ingest a table from a URL
