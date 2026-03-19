@@ -8,6 +8,26 @@ hide_table_of_contents: true
 
 # Changelog
 
+## v2.2.2 (2026-03-19)
+
+**Improvements**
+- UDFs don’t run when you open a canvas until it has been saved at least once
+- For slow saves, Workbench shows a warning instead of a blocking modal
+- Opening a canvas no longer auto-runs UDFs; the auto-run toggle is respected
+- For team-shared canvases, a warning explains that the share link can’t be opened in a new tab
+- Canvas renaming and saving improvements; duplicate name on upload is resolved automatically
+- [Experimental] Widgets: Map-H3 (emit on move, UTM pixel area, updates); bar chart (auto bottom margin from label length); JSON UI (edge animation, layout fixes); big number (auto shrink)
+
+**Bug fixes**
+- Canvas save state and save button state (including after zip upload) corrected
+- Opening the Version page no longer triggers UDF reruns
+- Checkpoint diff no longer includes README-only changes
+- Node toolbar appearing correctly and capture preview for canvas-rendered graphs fixed
+- UDF Table view: overlay no longer hides when changing filters
+
+**Upgrades**
+- DuckDB reverted to v1.4.3 due to a CRS/geometry issue in v1.5.0
+
 ## v2.2.1 (2026-03-16)
 
 **Canvas-wide shared tokens**
