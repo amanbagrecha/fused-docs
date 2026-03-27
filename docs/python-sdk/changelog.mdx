@@ -8,6 +8,43 @@ hide_table_of_contents: true
 
 # Changelog
 
+## v2.3.0 (2026-03-26)
+
+**New Home page**
+
+Workbench now has a new Home page! This allows you to quickly navigate between Canvases.
+
+<img
+  src="/img/changelog/v2_3_0_home_page.png"
+  alt="Canvases home page with search, sort, and canvas cards"
+  style={{ maxWidth: "600px", borderRadius: "12px", margin: "24px 0" }}
+/>
+
+**Improvements**
+
+- [Experimental] Session tokens: control access to shared UDFs and canvases similarly to a presigned S3 URL; `fused-py` supports the same flow
+- [Experimental] Widgets: H3 hex picker preset. Improved defaults & SQL editor
+- You can now clone a canvas from a Shared Canvas to make a copy for yourself
+- Resize several nodes at once on the canvas
+- Parameters show where they came from and surface conflicts when edits disagree
+- Saves and runs are easier to reason about: edges wait until upstream nodes finish saving before they run
+- Sharing is smoother: improved share modal, multi-select when sharing, and shared links open at the viewport you had when you clicked Share
+- Overall speed improvements and lower memory use across the canvas, catalog, DataTable, UDF explorer, and Workbench client
+
+**Bug fixes**
+
+- Shared canvases run UDFs reliably again; `fused-py` shared-canvas tokens behave correctly
+- Shared canvas works in Safari
+- Basic tier: Improved realtime caching & secrets UI
+- `fused.ingest()` accepts point layers with float32 columns
+- Collection name is not saved into metadata by default unless needed
+- UDFs no longer need an extra click to run in some cases
+
+**Upgrades**
+
+- `stlite` v1.5.0
+- `geoai-py` added
+
 ## v2.2.2 (2026-03-19)
 
 **Improvements**
