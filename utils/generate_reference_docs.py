@@ -215,12 +215,14 @@ fused.api.function_name()
 mod_api = mod["api"]
 
 # fused.api functions
+api_func_config = dict(default_config)
+api_func_config["show_root_full_path"] = False
 
 for obj in api_listing:
     if obj not in mod_api.members:
         print(f"Warning: {obj} not found in fused.api module, skipping")
         continue
-    docstring = render_object_docs(mod_api[obj], default_config)
+    docstring = render_object_docs(mod_api[obj], api_func_config)
     result += docstring + "\n---\n\n"
 
 # fused.api.FusedAPI class
